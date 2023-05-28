@@ -79,6 +79,8 @@
             <input type="password" id="password" name="password">
 
             <button type="submit">注 册</button>
+            <p> <a href="index.php">登录系统</a></p>
+
         </form>
     </div>
 </body>
