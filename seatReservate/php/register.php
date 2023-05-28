@@ -68,7 +68,7 @@
 <body>
     <div class="container">
         <h1>注 册 账 号</h1>
-        <form action="" method="POST">
+        <form method="post" action="do_register.php" id="login">
             <label for="stuno">学号:</label>
             <input type="text" id="stuno" name="stuno">
 
