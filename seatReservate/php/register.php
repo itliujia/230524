@@ -67,16 +67,19 @@
 
 <body>
     <div class="container">
-        <h1>图书馆座位预定系统</h1>
-        <form method="post" action="do_login.php" id="login">
+        <h1>注 册 账 号</h1>
+        <form action="" method="POST">
             <label for="stuno">学号:</label>
             <input type="text" id="stuno" name="stuno">
+
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name">
+
             <label for="password">密码:</label>
             <input type="password" id="password" name="password">
 
-            <button type="submit">登 录</button>
+            <button type="submit">注 册</button>
         </form>
-        <p>没有账号? <a href="register.php">注册一个</a></p>
     </div>
 </body>
 
