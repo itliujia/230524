@@ -62,6 +62,7 @@ if (isset($_SESSION['islogin'])) {
     <a href="seat.php"> <button>座位管理</button></a>
     <a href=""> <button>用户管理</button></a>
     <a href=""> <button>预定管理</button></a>
+    <a href="./index.php"> <button>返回前台</button></a>
 </body>
 
 </html>
