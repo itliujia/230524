@@ -76,7 +76,7 @@
             <button type="submit">登 录</button>
         </form>
         <p>没有账号? <a href="register.php">注册一个</a></p><br />
-        <p><a href="/admin">后台管理</a></p>
+        <p><a href="/admin/home.php">后台管理</a></p>
     </div>
 </body>
 

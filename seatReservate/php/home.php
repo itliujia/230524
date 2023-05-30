@@ -56,13 +56,15 @@ if (isset($_SESSION['islogin'])) {
 </head>
 
 <body>
-    <h1>欢迎来到后台！</h1>
-    <p>您已成功登录后台管理系统。</p>
 
-    <a href="seat.php"> <button>座位管理</button></a>
-    <a href="user.php"> <button>用户管理</button></a>
-    <a href="seat_booking.php"> <button>预定管理</button></a>
-    <a href="../index.php"> <button>返回前台</button></a>
+    <h1>
+        <?php echo $_SESSION['user_name']; ?>,欢迎登录系统！
+    </h1>
+    <p>您已成功登录图书馆座位预定系统。</p>
+
+    <a href="choice_seat.php"> <button>座位预定</button></a>
+    <a href="my_seat.php"> <button>预定记录</button></a>
+    <a href="index.php"> <button>退出登录</button></a>
 </body>
 
 </html>
