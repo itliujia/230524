@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 31/05/2023 00:39:30
+ Date: 01/06/2023 00:27:59
 */
 
 SET NAMES utf8mb4;
@@ -41,11 +41,13 @@ CREATE TABLE `course`  (
   `course_id` int(11) NOT NULL AUTO_INCREMENT,
   `course_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`course_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1003 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of course
 -- ----------------------------
+INSERT INTO `course` VALUES (1001, '语文');
+INSERT INTO `course` VALUES (1002, '数学');
 
 -- ----------------------------
 -- Table structure for score
@@ -57,11 +59,19 @@ CREATE TABLE `score`  (
   `course_id` int(11) NOT NULL,
   `score` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`score_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of score
 -- ----------------------------
+INSERT INTO `score` VALUES (1, 20230102, 1001, 90);
+INSERT INTO `score` VALUES (2, 20230103, 1001, 99);
+INSERT INTO `score` VALUES (3, 20230104, 1001, 98);
+INSERT INTO `score` VALUES (4, 20230105, 1001, 95);
+INSERT INTO `score` VALUES (5, 20230102, 1002, 100);
+INSERT INTO `score` VALUES (6, 20230103, 1002, 95);
+INSERT INTO `score` VALUES (7, 20230104, 1002, 90);
+INSERT INTO `score` VALUES (8, 20230105, 1002, 100);
 
 -- ----------------------------
 -- Table structure for student
@@ -78,7 +88,6 @@ CREATE TABLE `student`  (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES (1, 20230101, 'hhh', 123456);
 INSERT INTO `student` VALUES (2, 20230102, 'bbb', 123456);
 INSERT INTO `student` VALUES (3, 20230103, 'ccc', 123456);
 INSERT INTO `student` VALUES (4, 20230104, 'ddd', 123456);
