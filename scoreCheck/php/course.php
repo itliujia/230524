@@ -105,24 +105,24 @@ $db = mysqli_select_db($con, 'score');
 <body>
     <h1>成绩管理系统</h1>
     <ul>
-        <li><a href="admin_home.php" class="active">学生管理</a></li>
-        <li><a href="course.php">课程管理</a></li>
+        <li><a href="admin_home.php">学生管理</a></li>
+        <li><a href="course.php" class="active">课程管理</a></li>
         <li><a href="#">成绩管理</a></li>
         <li><a href="#">退出登录</a></li>
     </ul>
 
     <div class="clear"></div>
 
-    <a class="add" href="add_student.php">添加学生</a>
+    <a class="add" href="add_course.php">添加课程</a>
 
 
     <?php
-    $sql = "SELECT * FROM Student";
+    $sql = "SELECT * FROM Course";
     $result = mysqli_query($con, $sql);
     echo "<table>";
-    echo "<tr><th>ID</th><th>学号</th><th>姓名</th><th>查询密码</th><th>操作</th></tr>";
+    echo "<tr><th>ID</th><th>课程名称</th><th>操作</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>" . $row["id"] . "</td><td>" . $row["sid"] . "</td><td>" . $row["name"] . "</td><td>" . $row["pwd"] . "</td><td><a href='student_edit.php?id=" . $row["id"] . "'>编辑</a> | " . "<a href='student_delete.php?id=" . $row["id"] . "'>删除</a>" . "</td></tr>";
+        echo "<tr><td>" . $row["course_id"] . "</td><td>" . $row["course_name"] . "</td><td><a href='student_edit.php?id=" . $row["id"] . "'>编辑</a> | " . "<a href='student_delete.php?id=" . $row["id"] . "'>删除</a>" . "</td></tr>";
     }
     echo "</table>";
     mysqli_close($con);

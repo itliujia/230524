@@ -105,12 +105,10 @@ $db = mysqli_select_db($con, 'score');
     <div class="clear"></div>
 
     <form method="post" action="">
-        <label for="sid">学号：</label>
-        <input type="text" name="sid" required><br>
-        <label for="name">姓名：</label>
-        <input type="text" name="name" required><br>
-        <label for="pwd">查询密码：</label>
-        <input type="text" name="pwd" required><br>
+        <label for="course_id">课程ID：</label>
+        <input type="text" name="course_id" required><br>
+        <label for="course_name">课程名称：</label>
+        <input type="text" name="course_name" required><br>
         <input type="submit" class="button1" value="提交">
     </form>
 </body>
@@ -120,15 +118,14 @@ $db = mysqli_select_db($con, 'score');
 
 <?php
 
-$sid = $_POST['sid'];
-$name = $_POST['name'];
-$pwd = $_POST['pwd'];
-if ($sid) {
-    $insert = "insert into Student  (name,sid,pwd)VALUES('$name','$sid','$pwd') ";
+$course_id = $_POST['course_id'];
+$course_name = $_POST['course_name'];
+if ($course_id) {
+    $insert = "insert into Course  (course_id,course_name)VALUES('$course_id','$course_name') ";
     if (mysqli_query($con, $insert)) {
-        echo "<script>alert('添加成功！');window.location='admin_home.php';</script>";
+        echo "<script>alert('添加成功！');window.location='course.php';</script>";
     } else {
-        echo "<script>alert('添加失败，请重试');window.location='add_student.php';</script>";
+        echo "<script>alert('添加失败，请重试');window.location='add_course.php';</script>";
     }
 }
 
