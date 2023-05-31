@@ -96,10 +96,10 @@ $db = mysqli_select_db($con, 'score');
 <body>
     <h1>成绩管理系统</h1>
     <ul>
-        <li><a href="admin_home.php" class="active">学生管理</a></li>
-        <li><a href="#">课程管理</a></li>
-        <li><a href="#">成绩管理</a></li>
-        <li><a href="#">退出登录</a></li>
+        <li><a href="admin_home.php">学生管理</a></li>
+        <li><a href="course.php" class="active">课程管理</a></li>
+        <li><a href="score.php">成绩管理</a></li>
+        <li><a href="index.php">退出登录</a></li>
     </ul>
 
     <div class="clear"></div>

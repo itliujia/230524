@@ -107,8 +107,8 @@ $db = mysqli_select_db($con, 'score');
     <ul>
         <li><a href="admin_home.php" class="active">学生管理</a></li>
         <li><a href="course.php">课程管理</a></li>
-        <li><a href="#">成绩管理</a></li>
-        <li><a href="#">退出登录</a></li>
+        <li><a href="score.php">成绩管理</a></li>
+        <li><a href="index.php">退出登录</a></li>
     </ul>
 
     <div class="clear"></div>

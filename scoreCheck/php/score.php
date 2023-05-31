@@ -99,6 +99,11 @@ $db = mysqli_select_db($con, 'score');
         .add:hover {
             background-color: #21adff;
         }
+
+        .nooo {
+            border: none;
+            outline: none;
+        }
     </style>
 </head>
 
@@ -106,23 +111,42 @@ $db = mysqli_select_db($con, 'score');
     <h1>成绩管理系统</h1>
     <ul>
         <li><a href="admin_home.php">学生管理</a></li>
-        <li><a href="course.php" class="active">课程管理</a></li>
-        <li><a href="score.php">成绩管理</a></li>
+        <li><a href="course.php">课程管理</a></li>
+        <li><a href="score.php" class="active">成绩管理</a></li>
         <li><a href="index.php">退出登录</a></li>
     </ul>
 
     <div class="clear"></div>
 
-    <a class="add" href="add_course.php">添加课程</a>
-
+    <form method="get" action="" class="add">
+        <label for="course_id">课程：</label>
+        <select id="course_id" name="course_id">
+            <?php
+            $sql = "SELECT * FROM Course";
+            $result = mysqli_query($con, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . $row["course_id"] . "'>" . $row["course_name"] . "</option>";
+            }
+            ?>
+        </select>
+        <input type="submit" class="button1" value="查询">
+    </form>
 
     <?php
-    $sql = "SELECT * FROM Course";
+    $course_id = $_GET['course_id'];
+    if (!$course_id)
+        $course_id = 1001;
+    $sql = "SELECT * FROM score  right join  student  on  student.sid =score.student_id  and  score.course_id = " . $course_id;
+
     $result = mysqli_query($con, $sql);
     echo "<table>";
-    echo "<tr><th>ID</th><th>课程名称</th><th>操作</th></tr>";
+    echo "<tr><th>学号</th><th>学生姓名</th><th>成绩</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>" . $row["course_id"] . "</td><td>" . $row["course_name"] . "</td><td><a href='course_edit.php?id=" . $row["course_id"] . "'>编辑</a> | " . "<a href='course_delete.php?id=" . $row["course_id"] . "'>删除</a>" . "</td></tr>";
+        echo '<tr>';
+        echo '<td>' . $row["sid"] . '</td>';
+        echo '<td>' . $row["name"] . '</td>';
+        echo '<td>' . $row["score"] . ' | ';
+        echo '<a href="score_save.php?score_id=' . $row["score_id"] . '&sid=' . $row["sid"] . '&score=' . $row["score"] . '&course_id=' . $course_id . '&name=' . $row["name"] . '">编辑</a></td></tr>';
     }
     echo "</table>";
     mysqli_close($con);

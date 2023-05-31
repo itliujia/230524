@@ -3,7 +3,7 @@ $con = mysqli_connect('localhost', 'score', '123456');
 $db = mysqli_select_db($con, 'score');
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM Student WHERE id=" . $id;
+$sql = "SELECT * FROM Course WHERE course_id=" . $id;
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -102,8 +102,8 @@ $row = mysqli_fetch_assoc($result);
 <body>
     <h1>成绩管理系统</h1>
     <ul>
-        <li><a href="admin_home.php" class="active">学生管理</a></li>
-        <li><a href="course.php">课程管理</a></li>
+        <li><a href="admin_home.php">学生管理</a></li>
+        <li><a href="course.php" class="active">课程管理</a></li>
         <li><a href="score.php">成绩管理</a></li>
         <li><a href="index.php">退出登录</a></li>
     </ul>
@@ -111,14 +111,10 @@ $row = mysqli_fetch_assoc($result);
     <div class="clear"></div>
 
     <form method="post" action="">
-        <label for="sid">ID:</label>
-        <input type="text" name="id" readonly value="<?php echo $row["id"]; ?>"><br>
-        <label for="sid">学号：</label>
-        <input type="text" name="sid" required value="<?php echo $row["sid"]; ?>"><br>
-        <label for="name">姓名：</label>
-        <input type="text" name="name" required value="<?php echo $row["name"]; ?>"><br>
-        <label for="pwd">查询密码：</label>
-        <input type="text" name="pwd" required value="<?php echo $row["pwd"]; ?>"><br>
+        <label for="course_id">ID:</label>
+        <input type="text" name="course_id" readonly value="<?php echo $row["course_id"]; ?>"><br>
+        <label for="course_name">课程名称:</label>
+        <input type="text" name="course_name" required value="<?php echo $row["course_name"]; ?>"><br>
         <input type="submit" class="button1" value="提交">
     </form>
 </body>
@@ -127,16 +123,14 @@ $row = mysqli_fetch_assoc($result);
 
 
 <?php
-$id = $_POST['id'];
-$sid = $_POST['sid'];
-$name = $_POST['name'];
-$pwd = $_POST['pwd'];
-if ($sid) {
-    $update = "UPDATE Student SET name='$name', sid='$sid',pwd='$pwd' WHERE id=$id;";
+$course_id = $_POST['course_id'];
+$course_name = $_POST['course_name'];
+if ($course_id) {
+    $update = "UPDATE Course SET course_name='$course_name' WHERE course_id=$course_id;";
     if (mysqli_query($con, $update)) {
-        echo "<script>alert('修改成功！');window.location='admin_home.php';</script>";
+        echo "<script>alert('修改成功！');window.location='course.php';</script>";
     } else {
-        echo "<script>alert('修改失败，请重试');window.location='student_edit.php';</script>";
+        echo "<script>alert('修改失败，请重试');window.location='course_edit.php';</script>";
     }
 }
 

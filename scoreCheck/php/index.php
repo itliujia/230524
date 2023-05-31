@@ -101,6 +101,41 @@ $db = mysqli_select_db($con, 'score');
             border: 1px dashed black;
             padding: 0;
         }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        th {
+            background-color: #21add1;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -129,6 +164,23 @@ $db = mysqli_select_db($con, 'score');
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($res);
     if ($row) {
+
+        $sql = "SELECT * FROM  Score  join  Course  on  Course.course_id =Score.course_id  where  Score.student_id = " . $sid;
+        $result = mysqli_query($con, $sql);
+
+        echo "<h1>" . $name . "同学，你的成绩如下：</h1>";
+
+        echo "<table>";
+        echo "<tr><th>学号</th><th>课程</th><th>成绩</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<tr>';
+            echo '<td>' . $row["student_id"] . '</td>';
+            echo '<td>' . $row["course_name"] . '</td>';
+            echo '<td>' . $row["score"] . '</td></tr>';
+        }
+        echo "</table>";
+        mysqli_close($con);
+
 
     } else {
         echo "<h2>信息不匹配，请重新输入！</h2>";
