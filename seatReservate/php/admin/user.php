@@ -112,7 +112,7 @@ if (isset($_SESSION['islogin'])) {
             echo "<td>" . $row["name"] . "</td>";
             echo "<td>" . $row["stuno"] . "</td>";
             echo "<td>" . $row["password"] . "</td>";
-            echo "<td><a href='user_edit.php?id=" . $row["id"] . "'>编辑</a></td>";
+            echo "<td><a href='user_edit.php?id=" . $row["id"] . "'>编辑</a> <a href='user_delect.php?id=" . $row["id"] . "'>删除</a></td>";
             echo "</tr>";
         }
 

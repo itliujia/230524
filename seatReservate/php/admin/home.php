@@ -2,7 +2,7 @@
 session_start();
 header("Content-Type:text/html; charset=utf8");
 session_start();
-if (isset($_SESSION['islogin'])) {
+if (isset($_SESSION['islogin']) && $_SESSION['islogin'] == 1) {
 } else {
     echo "你还未登录，请登录</a>";
     echo "<script>location.href='index.php'</script>";
@@ -62,7 +62,8 @@ if (isset($_SESSION['islogin'])) {
     <a href="seat.php"> <button>座位管理</button></a>
     <a href="user.php"> <button>用户管理</button></a>
     <a href="seat_booking.php"> <button>预定管理</button></a>
-    <a href="../index.php"> <button>返回前台</button></a>
+    <a href="logout.php"> <button>退出登录</button></a>
+    <!-- <a href="../index.php"> <button>返回前台</button></a> -->
 </body>
 
 </html>
